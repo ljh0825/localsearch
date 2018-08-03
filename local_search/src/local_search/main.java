@@ -7,6 +7,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.sql.*;
 
+
 public class main {
 	public static StringBuilder sb;
 	static String getString(String input, String data) // API���� �ʿ��� ���� �ڸ���.
@@ -85,11 +86,11 @@ public class main {
 	            System.out.println("첫번째 타이틀 : " + title[0]);
 	            System.out.println("두번째 타이틀 : " + title[1]);
 	            System.out.println(sb);	
-	            String drivername="com.mysql.jdbc.Driver";
+	            String drivername="com.mysql.cj.jdbc.Driver";
 	            Class.forName(drivername);
 	            Connection conn  = DriverManager.getConnection("jdbc:mysql://localhost:3306/noriter","root","");
 	            Statement stmt = conn.createStatement();
-	            stmt.executeUpdate("CREATE DATABASE JAEHO TEST");
+	            stmt.executeUpdate("CREATE DATABASE JAEHOTEST");
 	        } catch (Exception e) {
 	            System.out.println(e);
 	        }
