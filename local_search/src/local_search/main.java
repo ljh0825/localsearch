@@ -22,7 +22,7 @@ public class main {
 	
 	 public static void main(String[] args) {
 		 String clientId = "bYDUDRCiO_Z_L6Cixbjr";
-	        String clientSecret = "N8y5x5s3BQ";
+	        String clientSecret = "";
 	        int display = 100;
 	        int start=3;
 	        try {
@@ -85,11 +85,11 @@ public class main {
 	            System.out.println("첫번째 타이틀 : " + title[0]);
 	            System.out.println("두번째 타이틀 : " + title[1]);
 	            System.out.println(sb);	
-	            //String drivername="com.mysql.jdbc.Driver";
-	            //Class.forName(drivername);
-	            //Connection conn  = DriverManager.getConnection("jdbc:mysql://localhost:3306/noriter","root","123456");
-	            //Statement stmt = conn.createStatement();
-	            //stmt.executeUpdate("CREATE DATABASE JAEHO TEST");
+	            String drivername="com.mysql.jdbc.Driver";
+	            Class.forName(drivername);
+	            Connection conn  = DriverManager.getConnection("jdbc:mysql://localhost:3306/noriter","root","");
+	            Statement stmt = conn.createStatement();
+	            stmt.executeUpdate("CREATE DATABASE JAEHO TEST");
 	        } catch (Exception e) {
 	            System.out.println(e);
 	        }
