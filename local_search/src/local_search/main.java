@@ -23,9 +23,10 @@ public class main {
 	
 	 public static void main(String[] args) {
 		 String clientId = "bYDUDRCiO_Z_L6Cixbjr";
-	        String clientSecret = "";
+	        String clientSecret = "N8y5x5s3BQ";
 	        int display = 100;
-	        int start=3;
+	        for(int n=1;n<=5;n++) {
+	        int start=n;
 	        try {
 	            String text = URLEncoder.encode("서울특별시 pc방", "utf-8");
 	            String apiURL = "https://openapi.naver.com/v1/search/local.json?query=" + text + "&display=" + display + "&start="+start+"&";
@@ -82,20 +83,22 @@ public class main {
 	                    k++;
 	                }
 	            }
-	            
-	            System.out.println("첫번째 타이틀 : " + title[0]);
-	            System.out.println("두번째 타이틀 : " + title[1]);
-	            System.out.println(sb);	
+	            	            
 	            String drivername="com.mysql.cj.jdbc.Driver";
 	            Class.forName(drivername);
-	            Connection conn  = DriverManager.getConnection("jdbc:mysql://localhost:3306/noriter","root","");
+	            Connection conn  = DriverManager.getConnection("jdbc:mysql://localhost:3306/jtest","root","123456");
 	            Statement stmt = conn.createStatement();
-	            stmt.executeUpdate("CREATE DATABASE JAEHOTEST");
+	            for (int i = 0; i < 100; i++) {
+	            title[i]=title[i].replace("<b>"," ");
+	            title[i]=title[i].replace("</b>"," ");
+	            String sql="insert into pcinfo values('"+title[i]+"','"+telephone[i]+"','"+address[i]+"',"+mapx[i]+","+mapy[i]+");";
+	            stmt.executeUpdate(sql);
+	            }
 	        } catch (Exception e) {
 	            System.out.println(e);
 	        }
 
-
+	        }
 	
 		 
 	 }
