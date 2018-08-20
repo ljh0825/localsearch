@@ -16,16 +16,13 @@ public class main {
         String[] dataSplit2 = dataSplit[1].split("\"" + input + "\"");
         return dataSplit2[0];
     }
-
-
-
-
 	
 	 public static void main(String[] args) {
+		 int pid=5;
 		 String clientId = "bYDUDRCiO_Z_L6Cixbjr";
 	        String clientSecret = "N8y5x5s3BQ";
 	        int display = 100;
-	        for(int n=1;n<=5;n++) {
+	        for(int n=1;n<=1;n++) {
 	        int start=n;
 	        try {
 	            String text = URLEncoder.encode("서울특별시 pc방", "utf-8");
@@ -86,12 +83,15 @@ public class main {
 	            	            
 	            String drivername="com.mysql.cj.jdbc.Driver";
 	            Class.forName(drivername);
-	            Connection conn  = DriverManager.getConnection("jdbc:mysql://localhost:3306/jtest","root","123456");
+	            Connection conn  = DriverManager.getConnection("jdbc:mysql://localhost:3306/noriter","root","123456");
 	            Statement stmt = conn.createStatement();
 	            for (int i = 0; i < 100; i++) {
 	            title[i]=title[i].replace("<b>"," ");
 	            title[i]=title[i].replace("</b>"," ");
-	            String sql="insert into pcinfo values('"+title[i]+"','"+telephone[i]+"','"+address[i]+"',"+mapx[i]+","+mapy[i]+");";
+	            String[] raddress=address[i].split(" ");
+	            String sql="insert into pcinfo values("+pid+",'"+title[i]+"','"+raddress[0]+"','"+raddress[1]+"','"+raddress[2]+
+	            		"','"+telephone[i]+"',"+mapx[i]+","+mapy[i]+",NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);";
+	            pid++;
 	            stmt.executeUpdate(sql);
 	            }
 	        } catch (Exception e) {
